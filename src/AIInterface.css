@@ -1,0 +1,269 @@
+/* =========================
+   AI INTERFACE
+========================= */
+
+.ai-interface {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 760px;
+  margin: 32px 0;
+}
+
+/* Terminal */
+
+.ai-terminal {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: rgba(12, 12, 12, 0.7);
+  backdrop-filter: blur(12px);
+}
+
+.ai-terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ai-terminal-lights {
+  display: flex;
+  gap: 5px;
+}
+
+.ai-terminal-lights span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #666;
+}
+
+.ai-terminal-title {
+  flex: 1;
+  font-family: monospace;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  color: #999;
+}
+
+.ai-online {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #aaa;
+}
+
+.ai-online-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ddd;
+  animation: ai-status-pulse 2s ease-in-out infinite;
+}
+
+.ai-terminal-body {
+  padding: 24px 18px 14px;
+}
+
+.ai-terminal-prompt {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-height: 48px;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.ai-prompt-symbol {
+  color: #888;
+}
+
+.ai-terminal-text {
+  color: #e0e0e0;
+  overflow-wrap: anywhere;
+}
+
+.ai-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: ai-cursor-blink 1s steps(2, start) infinite;
+}
+
+.ai-terminal-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  font-family: monospace;
+  font-size: 8px;
+  letter-spacing: 0.7px;
+  color: #666;
+}
+
+/* Orbital core */
+
+.ai-orbit {
+  position: relative;
+  flex: 0 0 150px;
+  width: 150px;
+  height: 150px;
+  display: grid;
+  place-items: center;
+}
+
+.ai-orbit::before {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.045);
+  filter: blur(20px);
+}
+
+.ai-orbit-ring {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+}
+
+.ai-orbit-ring-one {
+  animation: ai-orbit-rotate 8s linear infinite;
+}
+
+.ai-orbit-ring-two {
+  width: 125px;
+  height: 72px;
+  transform: rotate(-35deg);
+  animation: ai-orbit-rotate 11s linear infinite reverse;
+}
+
+.ai-orbit-ring-three {
+  width: 125px;
+  height: 72px;
+  transform: rotate(35deg);
+  animation: ai-orbit-rotate 14s linear infinite;
+}
+
+.ai-orbit-point {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.ai-core {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  background: #151515;
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.1);
+}
+
+.ai-core span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.7);
+}
+
+/* Animation */
+
+@keyframes ai-orbit-rotate {
+  from {
+    rotate: 0deg;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes ai-status-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes ai-cursor-blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .ai-interface {
+    gap: 10px;
+    margin: 24px 0;
+  }
+
+  .ai-terminal-header {
+    gap: 8px;
+    padding: 11px;
+  }
+
+  .ai-terminal-title {
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .ai-terminal-body {
+    padding: 18px 12px 12px;
+  }
+
+  .ai-terminal-prompt {
+    font-size: 10px;
+  }
+
+  .ai-terminal-footer {
+    font-size: 7px;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .ai-orbit {
+    flex-basis: 100px;
+    width: 100px;
+    height: 100px;
+    transform: scale(0.8);
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-orbit-ring,
+  .ai-online-dot,
+  .ai-cursor {
+    animation: none;
+  }
+}
