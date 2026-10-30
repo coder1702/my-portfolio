@@ -10,6 +10,8 @@ import {
   Menu,
   X,
   Sparkles,
+  Bot,
+  Database,
 } from "lucide-react";
 import "./App.css";
 
@@ -21,9 +23,10 @@ interface NavItem {
 const navigation: NavItem[] = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "Architecture", href: "#architecture" },
-  { label: "Experience", href: "#experience" },
+  { label: "Toolkit", href: "#toolkit" },
   { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  { label: "Engineering Focus", href: "#focus" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -204,8 +207,8 @@ function Hero() {
               <ArrowUpRight size={17} />
             </a>
 
-            <a href="#architecture" className="button button-secondary">
-              System Architecture
+            <a href="#focus" className="button button-secondary">
+              Engineering Focus
               <ArrowDownRight size={17} />
             </a>
 
@@ -248,58 +251,13 @@ function Hero() {
       </motion.a>
 
       <div className="hero-index" aria-hidden="true">
-        01 — 05
+        01 — 06
       </div>
     </section>
   );
 }
 
-interface SkillCategory {
-  category: string;
-  items: string[];
-  featured?: boolean;
-}
-
 function About() {
-  const skills: SkillCategory[] = [
-    {
-      category: "LANGUAGES",
-      items: ["Python", "JavaScript", "Dart"],
-    },
-    {
-      category: "AI SYSTEMS & FRAMEWORKS",
-      items: ["RAG", "Agentic AI", "LangChain", "LangGraph", "MCP"],
-      featured: true,
-    },
-    {
-      category: "AI / MACHINE LEARNING",
-      items: [
-        "PyTorch",
-        "TensorFlow",
-        "Pandas",
-        "NumPy",
-        "scikit-learn",
-        "Matplotlib",
-      ],
-    },
-    {
-      category: "BACKEND DEVELOPMENT",
-      items: ["FastAPI", "Flask", "Node.js", "Express"],
-    },
-    {
-      category: "FRONTEND / MOBILE",
-      items: ["React", "Flutter"],
-    },
-    {
-      category: "DATABASES",
-      items: ["PostgreSQL", "MySQL", "MongoDB", "SQLite"],
-    },
-    {
-      category: "TOOLS & PLATFORMS",
-      items: ["Git", "GitHub", "Unity", "Figma", "Swagger", "Apache", "Canva"],
-    },
-  ];
-
   return (
     <section className="section about-section" id="about">
       <div className="section-heading">
@@ -320,7 +278,7 @@ function About() {
           <h2 className="about-title">
             Curious by nature.
             <br />
-            <span>Driven by intelligence.</span>
+            <span>Driven by code &amp; intelligence.</span>
           </h2>
 
           <p className="about-lead">
@@ -425,45 +383,112 @@ function About() {
           </div>
         </motion.div>
       </div>
+    </section>
+  );
+}
 
-      <div className="skills-heading">
-        <div>
-          <span className="about-eyebrow">MY TOOLKIT</span>
+interface SkillCategory {
+  category: string;
+  items: string[];
+  featured?: boolean;
+  description: string;
+}
 
-          <h3>
-            Technologies I <span>work with.</span>
-          </h3>
-        </div>
+function Toolkit() {
+  const skills: SkillCategory[] = [
+    {
+      category: "AI SYSTEMS & FRAMEWORKS",
+      items: ["RAG", "Agentic AI", "LangChain", "LangGraph", "MCP"],
+      featured: true,
+      description: "Core architectures and orchestration frameworks for intelligent systems.",
+    },
+    {
+      category: "LANGUAGES",
+      items: ["Python", "JavaScript", "Dart"],
+      description: "Primary programming languages for backend, scripting, and mobile.",
+    },
+    {
+      category: "AI / MACHINE LEARNING",
+      items: [
+        "PyTorch",
+        "TensorFlow",
+        "Pandas",
+        "NumPy",
+        "scikit-learn",
+        "Matplotlib",
+      ],
+      description: "Data processing, scientific computing, and model training pipelines.",
+    },
+    {
+      category: "BACKEND DEVELOPMENT",
+      items: ["FastAPI", "Flask", "Node.js", "Express"],
+      description: "High-performance REST APIs, microservices, and asynchronous servers.",
+    },
+    {
+      category: "FRONTEND / MOBILE",
+      items: ["React", "Flutter"],
+      description: "Responsive web interfaces and cross-platform mobile applications.",
+    },
+    {
+      category: "DATABASES",
+      items: ["PostgreSQL", "MySQL", "MongoDB", "SQLite"],
+      description: "Relational data modeling, indexing, and document-oriented storage.",
+    },
+    {
+      category: "TOOLS & PLATFORMS",
+      items: ["Git", "GitHub", "Unity", "Figma", "Swagger", "Apache", "Canva"],
+      description: "Version control, API documentation, game engines, and design tooling.",
+    },
+  ];
 
-        <p>
-          Tools, frameworks, and technologies I leverage across AI engineering,
-          systems development, and data architecture.
+  return (
+    <section className="section toolkit-section" id="toolkit">
+      <div className="section-heading">
+        <span className="section-label">02 / TOOLKIT</span>
+        <span className="section-line" />
+      </div>
+
+      <div className="toolkit-header">
+        <span className="toolkit-eyebrow">TECHNICAL STACK</span>
+
+        <h2 className="section-title">
+          Technologies I
+          <br />
+          <span>work with.</span>
+        </h2>
+
+        <p className="toolkit-caption">
+          Tools, frameworks, and technologies I leverage across software development,
+          AI systems, and data architecture.
         </p>
       </div>
 
-      <div className="skills-grid">
+      <div className="toolkit-grid">
         {skills.map((skill, index) => (
           <motion.div
             key={skill.category}
-            className={`skill-card${skill.featured ? " skill-card-featured" : ""}`}
+            className={`toolkit-card ${skill.featured ? "toolkit-card-featured" : ""}`}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, delay: index * 0.08 }}
-            whileHover={{ y: -4 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.45, delay: index * 0.06 }}
           >
-            <div className="skill-card-top">
-              <span className="skill-category">
-                {skill.featured && <Sparkles size={11} style={{ marginRight: 6, display: "inline" }} />}
+            <div className="toolkit-card-top">
+              <span className="toolkit-category">
+                {skill.featured && (
+                  <Sparkles size={13} className="toolkit-featured-sparkle" />
+                )}
                 {skill.category}
               </span>
 
-              <span className="skill-index">0{index + 1}</span>
+              <span className="toolkit-index">0{index + 1}</span>
             </div>
 
-            <div className="skill-items">
+            <p className="toolkit-desc">{skill.description}</p>
+
+            <div className="toolkit-chips">
               {skill.items.map((item) => (
-                <span key={item} className="skill-chip">
+                <span key={item} className="toolkit-chip">
                   {item}
                 </span>
               ))}
@@ -471,337 +496,6 @@ function About() {
           </motion.div>
         ))}
       </div>
-    </section>
-  );
-}
-
-interface ArchNode {
-  id: string;
-  label: string;
-  description: string;
-  technicalRole: string;
-}
-
-const ragNodes: ArchNode[] = [
-  {
-    id: "rag-query",
-    label: "USER QUERY",
-    technicalRole: "INPUT INTERFACE",
-    description:
-      "Natural language prompt or query submitted by the user requiring factual or specialized context.",
-  },
-  {
-    id: "rag-embedding",
-    label: "EMBEDDING MODEL",
-    technicalRole: "VECTOR ENCODER",
-    description:
-      "Translates semantic query text into high-dimensional vector representations capturing conceptual meaning.",
-  },
-  {
-    id: "rag-vectordb",
-    label: "VECTOR DATABASE",
-    technicalRole: "INDEX & STORAGE",
-    description:
-      "Stores pre-indexed chunk embeddings and performs fast approximate nearest neighbor (ANN) similarity search.",
-  },
-  {
-    id: "rag-retriever",
-    label: "RETRIEVER",
-    technicalRole: "CONTEXT EXTRACTION",
-    description:
-      "Selects top-k semantically relevant chunks, reranks results, and prepares contextual snippets.",
-  },
-  {
-    id: "rag-llm",
-    label: "LLM",
-    technicalRole: "GENERATIVE ENGINE",
-    description:
-      "Synthesizes retrieved contextual evidence with original query to generate factual, grounded responses.",
-  },
-  {
-    id: "rag-response",
-    label: "GENERATED RESPONSE",
-    technicalRole: "OUTPUT VERIFICATION",
-    description:
-      "Contextually grounded, hallucination-resistant answer returned to the end user with high precision.",
-  },
-];
-
-const agentNodes: ArchNode[] = [
-  {
-    id: "agent-request",
-    label: "USER REQUEST",
-    technicalRole: "GOAL SPECIFICATION",
-    description:
-      "High-level goal or multi-step instruction specified by the user in natural language.",
-  },
-  {
-    id: "agent-core",
-    label: "AI AGENT",
-    technicalRole: "ORCHESTRATOR",
-    description:
-      "Central reasoning controller managing state, memory, system instructions, and execution loop.",
-  },
-  {
-    id: "agent-reasoning",
-    label: "REASONING / PLANNING",
-    technicalRole: "DECISION TREE",
-    description:
-      "Deconstructs goal into deterministic sub-tasks, evaluates current state, and plans the next logical action.",
-  },
-  {
-    id: "agent-toolselect",
-    label: "TOOL SELECTION",
-    technicalRole: "FUNCTION MATCHING",
-    description:
-      "Selects appropriate tool schemas, functions, or external APIs required to fulfill the planned step.",
-  },
-  {
-    id: "agent-execution",
-    label: "MCP / TOOL EXECUTION",
-    technicalRole: "EXTERNAL RUNTIME",
-    description:
-      "Executes tool call via Model Context Protocol or sandbox runtime and returns structured results.",
-  },
-  {
-    id: "agent-result",
-    label: "RESULT",
-    technicalRole: "EVALUATION & SYNTHESIS",
-    description:
-      "Evaluates output, verifies task fulfillment, and returns final synthesized response to the user.",
-  },
-];
-
-function ArchitectureFlow({
-  nodes,
-  title,
-  subtitle,
-}: {
-  nodes: ArchNode[];
-  title: string;
-  subtitle: string;
-}) {
-  const [activeNode, setActiveNode] = useState<string | null>(null);
-  const [activeStepIndex, setActiveStepIndex] = useState<number | null>(null);
-  const [isSimulating, setIsSimulating] = useState(false);
-
-  useEffect(() => {
-    if (!isSimulating) return;
-
-    let step = 0;
-    const interval = setInterval(() => {
-      step = (step + 1) % nodes.length;
-      setActiveStepIndex(step);
-    }, 1800);
-
-    return () => clearInterval(interval);
-  }, [isSimulating, nodes.length]);
-
-  return (
-    <div className="arch-flow">
-      <div className="arch-flow-header">
-        <div>
-          <span className="arch-flow-label">{title}</span>
-          <p className="arch-flow-sublabel">{subtitle}</p>
-        </div>
-
-        <button
-          className={`arch-simulate-btn ${isSimulating ? "arch-simulate-active" : ""}`}
-          onClick={() => {
-            const nextSim = !isSimulating;
-            setIsSimulating(nextSim);
-            setActiveStepIndex(nextSim ? 0 : null);
-          }}
-          aria-label={isSimulating ? "Pause flow simulation" : "Start flow simulation"}
-        >
-          <span className="arch-btn-dot" />
-          {isSimulating ? "PAUSE SIMULATION" : "SIMULATE FLOW"}
-        </button>
-      </div>
-
-      <div className="arch-nodes">
-        {nodes.map((node, index) => {
-          const isSelected = activeNode === node.id;
-          const isFlowActive = activeStepIndex === index;
-
-          return (
-            <div key={node.id} className="arch-node-wrapper">
-              <motion.div
-                className={`arch-node ${isSelected || isFlowActive ? "arch-node-active" : ""}`}
-                onMouseEnter={() => setActiveNode(node.id)}
-                onMouseLeave={() => setActiveNode(null)}
-                onClick={() => setActiveNode(isSelected ? null : node.id)}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
-              >
-                <div className="arch-node-top">
-                  <span className="arch-node-index">0{index + 1}</span>
-                  <span className="arch-node-role">{node.technicalRole}</span>
-                </div>
-
-                <div className="arch-node-title-row">
-                  <span className="arch-node-label">{node.label}</span>
-                  <span className="arch-node-hint">
-                    {isSelected ? "TAP TO COLLAPSE" : "HOVER TO INSPECT"}
-                  </span>
-                </div>
-
-                <AnimatePresence>
-                  {(isSelected || isFlowActive) && (
-                    <motion.div
-                      className="arch-node-desc-wrapper"
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.25 }}
-                    >
-                      <p className="arch-node-desc">{node.description}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-
-              {index < nodes.length - 1 && (
-                <div className="arch-connector" aria-hidden="true">
-                  <div className="arch-connector-line" />
-                  <div
-                    className={`arch-connector-dot ${
-                      activeStepIndex === index ? "arch-connector-dot-active" : ""
-                    }`}
-                  />
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-function Architecture() {
-  return (
-    <section className="section architecture-section" id="architecture">
-      <div className="section-heading">
-        <span className="section-label">02 / ARCHITECTURE</span>
-        <span className="section-line" />
-      </div>
-
-      <div className="architecture-header">
-        <p className="architecture-eyebrow">HOW INTELLIGENT SYSTEMS WORK</p>
-
-        <h2 className="section-title">
-          System
-          <br />
-          <span>architectures.</span>
-        </h2>
-
-        <p className="architecture-caption">
-          Interactive educational representations of core AI engineering patterns —
-          illustrating how retrieval-augmented generation pipelines and autonomous
-          agentic workflows process data step by step.
-        </p>
-      </div>
-
-      <div className="architecture-grid">
-        <ArchitectureFlow
-          nodes={ragNodes}
-          title="RAG PIPELINE"
-          subtitle="RETRIEVAL-AUGMENTED GENERATION ARCHITECTURE"
-        />
-
-        <ArchitectureFlow
-          nodes={agentNodes}
-          title="AGENTIC AI WORKFLOW"
-          subtitle="AUTONOMOUS REASONING &amp; TOOL EXECUTION"
-        />
-      </div>
-    </section>
-  );
-}
-
-function Experience() {
-  const technologies = [
-    "Artificial Intelligence",
-    "API Development",
-    "PostgreSQL",
-  ];
-
-  return (
-    <section className="section experience-section" id="experience">
-      <div className="section-heading">
-        <span className="section-label">03 / EXPERIENCE</span>
-        <span className="section-line" />
-      </div>
-
-      <div className="experience-header">
-        <p className="experience-eyebrow">WHERE I'M GROWING</p>
-
-        <h2 className="experience-title">
-          Learning by
-          <br />
-          <span>building.</span>
-        </h2>
-
-        <p className="experience-intro">
-          Gaining practical experience, exploring new technologies, and
-          developing my skills in AI and software development.
-        </p>
-      </div>
-
-      <motion.article
-        className="experience-card"
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="experience-card-top">
-          <span className="experience-index">01</span>
-
-          <span className="experience-status">
-            <span className="experience-status-dot" />
-            INTERNSHIP
-          </span>
-        </div>
-
-        <div className="experience-main">
-          <p className="experience-period">AUG 2026 — NOV 2026</p>
-
-          <h3>AI/ML Intern</h3>
-
-          <a
-            href="https://amnex.com/"
-            target="_blank"
-            rel="noreferrer"
-            className="experience-company"
-          >
-            Amnex Infotechnologies Pvt. Ltd.
-            <ArrowUpRight size={16} />
-          </a>
-
-          <p className="experience-location">
-            Ahmedabad, Gujarat, India · Full-time
-          </p>
-
-          <p className="experience-description">
-            Currently learning and working with artificial intelligence, API
-            development, and PostgreSQL databases. Gaining practical experience
-            while strengthening my understanding of AI/ML concepts, backend
-            integration, and database management.
-          </p>
-
-          <div className="experience-technologies">
-            {technologies.map((technology) => (
-              <span key={technology} className="experience-tag">
-                {technology}
-              </span>
-            ))}
-          </div>
-        </div>
-      </motion.article>
     </section>
   );
 }
@@ -825,10 +519,10 @@ const projects: ProjectData[] = [
   {
     number: "01",
     name: "MediQueue",
-    category: "SOFTWARE DEVELOPMENT",
+    category: "HEALTHCARE ORCHESTRATION",
     description:
-      "A healthcare queue management project focused on organizing patient flow and making the experience more efficient.",
-    technologies: ["Python", "Database", "Backend"],
+      "A healthcare queue management project focused on organizing patient flow, reducing intake bottlenecks, and coordinating real-time queue states.",
+    technologies: ["Python", "Database", "Backend", "System Architecture"],
     visual: "mediqueue",
     status: "IN DEVELOPMENT",
     link: "https://github.com/coder1702",
@@ -839,11 +533,11 @@ const projects: ProjectData[] = [
   },
   {
     number: "02",
-    name: "Jarvis AI",
+    name: "Jarvis AI Assistant",
     category: "AI & AUTOMATION",
     description:
-      "A personal assistant project exploring voice interaction, computer vision, and desktop automation.",
-    technologies: ["Python", "OpenCV", "AI"],
+      "A personal assistant project exploring voice interaction, computer vision frame analysis, and desktop system automation routines.",
+    technologies: ["Python", "OpenCV", "AI", "System Automation"],
     visual: "jarvis",
     status: "EXPERIMENTAL",
     link: "https://github.com/coder1702",
@@ -855,10 +549,10 @@ const projects: ProjectData[] = [
   {
     number: "03",
     name: "Echo Runner",
-    category: "GAME DEVELOPMENT",
+    category: "INTERACTIVE SYSTEMS",
     description:
-      "A 2D platformer built around movement, timing, and an echo mechanic used to solve puzzles.",
-    technologies: ["Unity", "C#", "2D"],
+      "A 2D platformer built around momentum, timing, and an echo replay mechanic where past ghost movements collaborate to solve puzzle barriers.",
+    technologies: ["Unity", "C#", "2D", "Physics Simulation"],
     visual: "echo",
     status: "GAME PROJECT",
     link: "https://github.com/coder1702",
@@ -1065,20 +759,23 @@ function Projects() {
   return (
     <section className="section projects-section" id="projects">
       <div className="section-heading">
-        <span className="section-label">04 / SELECTED WORK</span>
+        <span className="section-label">03 / PROJECTS</span>
         <span className="section-line" />
       </div>
 
       <div className="projects-header">
-        <h2 className="section-title">
-          Things I've
-          <br />
-          <span>been building.</span>
-        </h2>
+        <div>
+          <span className="projects-eyebrow">SELECTED BUILDS</span>
+          <h2 className="section-title">
+            Featured work &amp;
+            <br />
+            <span>software builds.</span>
+          </h2>
+        </div>
 
         <p className="projects-caption">
-          A selection of experiments, ideas, and projects that reflect my
-          journey as a developer.
+          A selection of projects and software implementations demonstrating practical
+          engineering, architecture, and problem-solving.
         </p>
       </div>
 
@@ -1094,7 +791,6 @@ function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -6 }}
             >
               <a
                 href={project.link}
@@ -1192,11 +888,335 @@ function Projects() {
   );
 }
 
+function Experience() {
+  const technologies = [
+    "Artificial Intelligence",
+    "API Development",
+    "PostgreSQL",
+  ];
+
+  return (
+    <section className="section experience-section" id="experience">
+      <div className="section-heading">
+        <span className="section-label">04 / EXPERIENCE</span>
+        <span className="section-line" />
+      </div>
+
+      <div className="experience-header">
+        <p className="experience-eyebrow">WHERE I'M GROWING</p>
+
+        <h2 className="experience-title">
+          Learning by
+          <br />
+          <span>building.</span>
+        </h2>
+
+        <p className="experience-intro">
+          Gaining practical experience, exploring new technologies, and
+          developing my skills in AI and software development.
+        </p>
+      </div>
+
+      <motion.article
+        className="experience-card"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="experience-card-top">
+          <span className="experience-index">01</span>
+
+          <span className="experience-status">
+            <span className="experience-status-dot" />
+            INTERNSHIP
+          </span>
+        </div>
+
+        <div className="experience-main">
+          <p className="experience-period">AUG 2026 — NOV 2026</p>
+
+          <h3>AI/ML Intern</h3>
+
+          <a
+            href="https://amnex.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="experience-company"
+          >
+            Amnex Infotechnologies Pvt. Ltd.
+            <ArrowUpRight size={16} />
+          </a>
+
+          <p className="experience-location">
+            Ahmedabad, Gujarat, India · Full-time
+          </p>
+
+          <p className="experience-description">
+            Currently learning and working with artificial intelligence, API
+            development, and PostgreSQL databases. Gaining practical experience
+            while strengthening my understanding of AI/ML concepts, backend
+            integration, and database management.
+          </p>
+
+          <div className="experience-technologies">
+            {technologies.map((technology) => (
+              <span key={technology} className="experience-tag">
+                {technology}
+              </span>
+            ))}
+          </div>
+        </div>
+      </motion.article>
+    </section>
+  );
+}
+
+interface FocusNode {
+  name: string;
+  role: string;
+  active?: boolean;
+}
+
+const aiSystemsNodes: FocusNode[] = [
+  { name: "Retrieval-Augmented Generation", role: "GROUNDING ARCHITECTURE", active: true },
+  { name: "Vector Search", role: "SIMILARITY INDEX" },
+  { name: "Embedding Models", role: "SEMANTIC ENCODING" },
+  { name: "LLM Integration", role: "SYNTHESIS & INFERENCE" },
+  { name: "Context Retrieval", role: "KNOWLEDGE EXTRACTION" },
+];
+
+const agenticSystemsNodes: FocusNode[] = [
+  { name: "Agentic AI", role: "REASONING CONTROLLER", active: true },
+  { name: "LangChain", role: "FRAMEWORK INTEGRATION" },
+  { name: "LangGraph", role: "STATEFUL GRAPH CYCLES" },
+  { name: "MCP", role: "MODEL CONTEXT PROTOCOL" },
+  { name: "Tool Calling", role: "FUNCTION EXECUTION" },
+  { name: "Workflow Orchestration", role: "MULTI-STEP PLANNING" },
+];
+
+function EngineeringFocus() {
+  return (
+    <section className="section focus-section" id="focus">
+      <div className="section-heading">
+        <span className="section-label">05 / ENGINEERING FOCUS</span>
+        <span className="section-line" />
+      </div>
+
+      <div className="focus-header">
+        <span className="focus-eyebrow">SYSTEMS &amp; ARCHITECTURE</span>
+
+        <h2 className="section-title">
+          Engineering
+          <br />
+          <span>focus.</span>
+        </h2>
+
+        <p className="focus-caption">
+          Exploring the systems and technologies behind intelligent applications.
+        </p>
+      </div>
+
+      <div className="focus-grid">
+        {/* Module A: AI Systems */}
+        <motion.div
+          className="focus-card"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="focus-card-header">
+            <div className="focus-card-title-group">
+              <span className="focus-sys-tag">
+                <Database size={11} className="focus-tag-icon" />
+                SYSTEM 01 // KNOWLEDGE &amp; RETRIEVAL
+              </span>
+              <h3 className="focus-card-title">AI Systems</h3>
+            </div>
+
+            <div className="focus-status-badge">
+              <span className="focus-status-dot" />
+              <span>ACTIVE EXPLORATION</span>
+            </div>
+          </div>
+
+          <p className="focus-card-intro">
+            Architectures for grounding models with contextual knowledge, high-dimensional
+            vector search, and semantic document retrieval.
+          </p>
+
+          <div className="focus-telemetry-panel">
+            <div className="focus-telemetry-header">
+              <span>SYSTEM TOPOLOGY</span>
+              <span>5 CONNECTED NODES</span>
+            </div>
+
+            <div className="focus-network-visual">
+              <svg className="focus-svg-canvas" viewBox="0 0 460 120" fill="none">
+                {/* Circuit lines */}
+                <path
+                  d="M 60 60 H 400"
+                  stroke="rgba(255, 255, 255, 0.12)"
+                  strokeWidth="1.5"
+                  strokeDasharray="4 4"
+                />
+                <path
+                  d="M 60 60 L 140 25 L 320 25 L 400 60"
+                  stroke="rgba(139, 92, 246, 0.28)"
+                  strokeWidth="1.5"
+                />
+                <path
+                  d="M 60 60 L 140 95 L 320 95 L 400 60"
+                  stroke="rgba(139, 92, 246, 0.28)"
+                  strokeWidth="1.5"
+                />
+
+                {/* Animated data pulse */}
+                <circle cx="230" cy="25" r="3" fill="#a78bfa">
+                  <animate
+                    attributeName="cx"
+                    values="140; 320; 140"
+                    dur="4s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+                <circle cx="230" cy="95" r="3" fill="#a78bfa">
+                  <animate
+                    attributeName="cx"
+                    values="320; 140; 320"
+                    dur="4s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+
+                {/* Center Hub Indicator */}
+                <circle cx="230" cy="60" r="18" fill="rgba(139, 92, 246, 0.1)" stroke="rgba(139, 92, 246, 0.4)" strokeWidth="1.5" />
+                <circle cx="230" cy="60" r="6" fill="#a78bfa" />
+              </svg>
+            </div>
+
+            <div className="focus-node-pills">
+              {aiSystemsNodes.map((node) => (
+                <div
+                  key={node.name}
+                  className={`focus-node-pill ${node.active ? "focus-node-pill-active" : ""}`}
+                >
+                  <div className="focus-node-pill-top">
+                    <span className="focus-node-bullet" />
+                    <span className="focus-node-role">{node.role}</span>
+                  </div>
+                  <span className="focus-node-title">{node.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Module B: Agentic Systems */}
+        <motion.div
+          className="focus-card focus-card-agentic"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <div className="focus-card-header">
+            <div className="focus-card-title-group">
+              <span className="focus-sys-tag">
+                <Bot size={11} className="focus-tag-icon" />
+                SYSTEM 02 // AUTONOMOUS REASONING
+              </span>
+              <h3 className="focus-card-title">Agentic Systems</h3>
+            </div>
+
+            <div className="focus-status-badge">
+              <span className="focus-status-dot" />
+              <span>ACTIVE EXPLORATION</span>
+            </div>
+          </div>
+
+          <p className="focus-card-intro">
+            Stateful multi-actor workflows, Model Context Protocol integration,
+            deterministic planning graphs, and autonomous tool calling.
+          </p>
+
+          <div className="focus-telemetry-panel">
+            <div className="focus-telemetry-header">
+              <span>SYSTEM TOPOLOGY</span>
+              <span>6 CONNECTED NODES</span>
+            </div>
+
+            <div className="focus-network-visual">
+              <svg className="focus-svg-canvas" viewBox="0 0 460 120" fill="none">
+                {/* Circuit lines */}
+                <path
+                  d="M 60 60 H 400"
+                  stroke="rgba(255, 255, 255, 0.12)"
+                  strokeWidth="1.5"
+                  strokeDasharray="4 4"
+                />
+                <path
+                  d="M 60 60 L 130 25 L 230 25 L 330 25 L 400 60"
+                  stroke="rgba(139, 92, 246, 0.28)"
+                  strokeWidth="1.5"
+                />
+                <path
+                  d="M 60 60 L 130 95 L 230 95 L 330 95 L 400 60"
+                  stroke="rgba(139, 92, 246, 0.28)"
+                  strokeWidth="1.5"
+                />
+
+                {/* Animated data pulse */}
+                <circle cx="230" cy="25" r="3" fill="#a78bfa">
+                  <animate
+                    attributeName="cx"
+                    values="130; 330; 130"
+                    dur="3.6s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+                <circle cx="230" cy="95" r="3" fill="#a78bfa">
+                  <animate
+                    attributeName="cx"
+                    values="330; 130; 330"
+                    dur="3.6s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+
+                {/* Center Controller Hub */}
+                <circle cx="230" cy="60" r="18" fill="rgba(139, 92, 246, 0.12)" stroke="rgba(139, 92, 246, 0.45)" strokeWidth="1.5" />
+                <circle cx="230" cy="60" r="6" fill="#a78bfa" />
+              </svg>
+            </div>
+
+            <div className="focus-node-pills">
+              {agenticSystemsNodes.map((node) => (
+                <div
+                  key={node.name}
+                  className={`focus-node-pill ${node.active ? "focus-node-pill-active" : ""}`}
+                >
+                  <div className="focus-node-pill-top">
+                    <span className="focus-node-bullet" />
+                    <span className="focus-node-role">{node.role}</span>
+                  </div>
+                  <span className="focus-node-title">{node.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 function Contact() {
   return (
     <section className="section contact-section" id="contact">
       <div className="section-heading">
-        <span className="section-label">05 / GET IN TOUCH</span>
+        <span className="section-label">06 / GET IN TOUCH</span>
         <span className="section-line" />
       </div>
 
@@ -1216,7 +1236,7 @@ function Contact() {
         </h2>
 
         <p className="contact-description">
-          Have an idea, a project opportunity, or want to discuss AI engineering and system development? Feel free to reach out.
+          Have an idea, an opportunity, or just want to talk technology? I'd love to hear from you.
         </p>
 
         {/* Email contact button */}
@@ -1333,9 +1353,10 @@ function App() {
       <main>
         <Hero />
         <About />
-        <Architecture />
-        <Experience />
+        <Toolkit />
         <Projects />
+        <Experience />
+        <EngineeringFocus />
         <Contact />
       </main>
 
