@@ -3,11 +3,12 @@ import { motion } from "motion/react";
 import "./AIInterface.css";
 
 const messages = [
-  "INITIALIZING DEVELOPER PROFILE...",
-  "AI / ML MODULE ........ READY",
-  "API SERVICES .......... READY",
-  "DATABASE SYSTEM ....... READY",
-  "STATUS: EXPLORING & BUILDING",
+  "INITIALIZING AI SYSTEMS...",
+  "RAG PIPELINE ........... READY",
+  "AGENTIC FRAMEWORK ...... READY",
+  "LLM INTEGRATION ........ READY",
+  "API SERVICES ........... READY",
+  "STATUS: BUILDING & EXPERIMENTING",
 ];
 
 export default function AIInterface() {
@@ -18,8 +19,6 @@ export default function AIInterface() {
     const currentMessage = messages[messageIndex];
     let characterIndex = 0;
 
-    setDisplayedText("");
-
     const typingTimer = window.setInterval(() => {
       characterIndex++;
 
@@ -29,6 +28,7 @@ export default function AIInterface() {
         window.clearInterval(typingTimer);
 
         window.setTimeout(() => {
+          setDisplayedText("");
           setMessageIndex((previous) => (previous + 1) % messages.length);
         }, 1800);
       }
@@ -43,7 +43,7 @@ export default function AIInterface() {
       initial={{ opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.5 }}
-      aria-label="Animated developer system interface"
+      aria-label="Animated AI system interface"
     >
       <div className="ai-terminal">
         <div className="ai-terminal-header">
@@ -53,7 +53,7 @@ export default function AIInterface() {
             <span />
           </div>
 
-          <span className="ai-terminal-title">SYSTEM INTERFACE</span>
+          <span className="ai-terminal-title">AI SYSTEM INTERFACE</span>
 
           <div className="ai-online">
             <span className="ai-online-dot" />
@@ -72,7 +72,7 @@ export default function AIInterface() {
           </div>
 
           <div className="ai-terminal-footer">
-            <span>DEVELOPER ENVIRONMENT</span>
+            <span>AI ENGINEERING ENVIRONMENT</span>
             <span>INTERACTIVE DISPLAY</span>
           </div>
         </div>
