@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import AIInterface from "./AIInterface";
+import VectorField from "./VectorField";
+import CommandPalette from "./CommandPalette";
+import AskPortfolio from "./AskPortfolio";
+import type { MouseEvent as RMouseEvent } from "react";
+import "./Enhancements.css";
 import {
   ArrowDown,
   ArrowDownRight,
@@ -12,6 +17,7 @@ import {
   Sparkles,
   Bot,
   Database,
+  Search,
 } from "lucide-react";
 import "./App.css";
 
@@ -60,6 +66,16 @@ function Navbar() {
           </a>
         ))}
       </nav>
+
+      <button
+        className="palette-trigger"
+        onClick={() => window.dispatchEvent(new Event("open-palette"))}
+        aria-label="Open command palette"
+      >
+        <Search size={13} />
+        <span>Search</span>
+        <kbd>Ctrl K</kbd>
+      </button>
 
       <a href="#contact" className="nav-cta">
         Let's Talk <ArrowUpRight size={15} />
@@ -112,6 +128,7 @@ function Hero() {
       <div className="hero-grid" aria-hidden="true" />
       <div className="hero-spotlight" aria-hidden="true" />
       <div className="hero-glow" aria-hidden="true" />
+      <VectorField />
 
       <motion.div
         className="hero-content"
@@ -251,7 +268,7 @@ function Hero() {
       </motion.a>
 
       <div className="hero-index" aria-hidden="true">
-        01 — 06
+        01 — 07
       </div>
     </section>
   );
@@ -444,7 +461,7 @@ function Toolkit() {
   return (
     <section className="section toolkit-section" id="toolkit">
       <div className="section-heading">
-        <span className="section-label">02 / TOOLKIT</span>
+        <span className="section-label">03 / TOOLKIT</span>
         <span className="section-line" />
       </div>
 
@@ -749,6 +766,22 @@ function ProjectVisual({ type }: { type: string }) {
   );
 }
 
+function tilt(e: RMouseEvent<HTMLElement>) {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const el = e.currentTarget;
+  const r = el.getBoundingClientRect();
+  const x = (e.clientX - r.left) / r.width;
+  const y = (e.clientY - r.top) / r.height;
+  el.style.setProperty("--ry", `${(x - 0.5) * 7}deg`);
+  el.style.setProperty("--rx", `${(0.5 - y) * 7}deg`);
+  el.style.setProperty("--gx", `${x * 100}%`);
+  el.style.setProperty("--gy", `${y * 100}%`);
+}
+function untilt(e: RMouseEvent<HTMLElement>) {
+  e.currentTarget.style.setProperty("--rx", "0deg");
+  e.currentTarget.style.setProperty("--ry", "0deg");
+}
+
 function Projects() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
@@ -759,7 +792,7 @@ function Projects() {
   return (
     <section className="section projects-section" id="projects">
       <div className="section-heading">
-        <span className="section-label">03 / PROJECTS</span>
+        <span className="section-label">04 / PROJECTS</span>
         <span className="section-line" />
       </div>
 
@@ -797,6 +830,8 @@ function Projects() {
                 target="_blank"
                 rel="noreferrer"
                 className="project-preview-link"
+                onMouseMove={tilt}
+                onMouseLeave={untilt}
                 aria-label={`View ${project.name} on GitHub`}
               >
                 <ProjectVisual type={project.visual} />
@@ -898,7 +933,7 @@ function Experience() {
   return (
     <section className="section experience-section" id="experience">
       <div className="section-heading">
-        <span className="section-label">04 / EXPERIENCE</span>
+        <span className="section-label">05 / EXPERIENCE</span>
         <span className="section-line" />
       </div>
 
@@ -999,7 +1034,7 @@ function EngineeringFocus() {
   return (
     <section className="section focus-section" id="focus">
       <div className="section-heading">
-        <span className="section-label">05 / ENGINEERING FOCUS</span>
+        <span className="section-label">06 / ENGINEERING FOCUS</span>
         <span className="section-line" />
       </div>
 
@@ -1216,7 +1251,7 @@ function Contact() {
   return (
     <section className="section contact-section" id="contact">
       <div className="section-heading">
-        <span className="section-label">06 / GET IN TOUCH</span>
+        <span className="section-label">07 / GET IN TOUCH</span>
         <span className="section-line" />
       </div>
 
@@ -1349,10 +1384,18 @@ function App() {
     <>
       <ScrollProgress />
       <Navbar />
+      <CommandPalette />
 
       <main>
         <Hero />
         <About />
+        <section className="section ask-section">
+          <div className="section-heading">
+            <span className="section-label">02 / ASK ME</span>
+            <span className="section-line" />
+          </div>
+          <AskPortfolio />
+        </section>
         <Toolkit />
         <Projects />
         <Experience />

@@ -238,7 +238,7 @@ button {
 
   color: #d1d1d1;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 10px;
   letter-spacing: 1.2px;
 }
@@ -346,7 +346,7 @@ button {
 }
 
 .hero-status-label {
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 1.4px;
@@ -354,7 +354,7 @@ button {
 }
 
 .hero-status-value {
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 11.5px;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -463,7 +463,7 @@ button {
 
   color: #555;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 9px;
   letter-spacing: 2px;
 }
@@ -482,7 +482,7 @@ button {
 
   color: #858585;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 9px;
   letter-spacing: 2px;
 
@@ -496,7 +496,7 @@ button {
 
   color: #555;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 10px;
   letter-spacing: 1px;
 }
@@ -525,7 +525,7 @@ button {
 
   color: #d4d4d8;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 2px;
@@ -636,7 +636,7 @@ button {
 .stat-label {
   color: #777;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 9px;
   letter-spacing: 1.4px;
 }
@@ -696,7 +696,7 @@ button {
 
   color: #666;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 11px;
 }
 
@@ -707,7 +707,7 @@ button {
 .project-category {
   color: #777;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 9px;
   letter-spacing: 1.6px;
 }
@@ -746,7 +746,7 @@ button {
   border: 1px solid #2c2c2c;
   border-radius: 4px;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 9px;
 }
 
@@ -820,7 +820,7 @@ button {
 
   color: #858585;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 10px;
   letter-spacing: 1.8px;
 }
@@ -893,7 +893,7 @@ button {
 }
 
 .contact-email-label {
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 2px;
@@ -949,7 +949,7 @@ button {
 
   color: #666;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 9px;
   letter-spacing: 1px;
 }
@@ -1474,7 +1474,7 @@ button {
 .window-status {
   color: #777;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 8px;
   letter-spacing: 1px;
 }
@@ -1554,7 +1554,7 @@ button {
 .preview-eyebrow {
   color: #888;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 8px;
   letter-spacing: 1px;
 }
@@ -1569,7 +1569,7 @@ button {
 .preview-date {
   color: #777;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 8px;
 }
 
@@ -1630,7 +1630,7 @@ button {
 
   color: #777;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 8px;
   letter-spacing: 0.7px;
 }
@@ -1654,7 +1654,7 @@ button {
   background: #242424;
   border-radius: 5px;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 8px;
 }
 
@@ -1665,7 +1665,7 @@ button {
   background: #242424;
   border-radius: 3px;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 7px;
 }
 
@@ -1761,7 +1761,7 @@ button {
 
   border-left: 1px solid #393939;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: clamp(7px, 1vw, 10px);
   line-height: 2.4;
 
@@ -1804,7 +1804,7 @@ button {
 
   color: #777;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 7px;
   letter-spacing: 0.7px;
 }
@@ -1950,7 +1950,7 @@ button {
 
   color: #bcbcbc;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 9px;
   letter-spacing: 1.3px;
 }
@@ -1962,7 +1962,7 @@ button {
 
   color: #777;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 8px;
 }
 
@@ -1990,7 +1990,7 @@ button {
 
   color: #a1a1aa;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 1.5px;
@@ -2029,7 +2029,7 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 6px;
   color: #e4e4e7;
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -2062,7 +2062,7 @@ button {
 }
 
 .project-detail-label {
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 1.4px;
@@ -2096,7 +2096,7 @@ button {
 
   color: #d4d4d8;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -2298,7 +2298,7 @@ button {
 
   color: #a1a1aa;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 2px;
@@ -2338,7 +2338,7 @@ button {
 .about-principles span {
   color: #d4d4d8;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 1.5px;
@@ -2372,7 +2372,7 @@ button {
 
   color: #a1a1aa;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 11px;
   font-weight: 600;
 }
@@ -2394,7 +2394,7 @@ button {
 .terminal-body {
   padding: 24px 22px;
 
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 12.5px;
   line-height: 2;
 }
@@ -2477,7 +2477,7 @@ button {
   display: inline-block;
   margin-bottom: 16px;
   color: #a1a1aa;
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 2px;
@@ -2541,7 +2541,7 @@ button {
   align-items: center;
   gap: 7px;
   color: #ffffff;
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 1.2px;
@@ -2557,7 +2557,7 @@ button {
 
 .toolkit-index {
   color: #71717a;
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 11px;
   font-weight: 600;
 }
@@ -2628,7 +2628,7 @@ button {
   display: inline-block;
   margin-bottom: 16px;
   color: #a1a1aa;
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 2px;
@@ -2680,7 +2680,7 @@ button {
   gap: 6px;
   margin-bottom: 8px;
   color: var(--accent);
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 1.5px;
@@ -2707,7 +2707,7 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 4px;
   color: #a1a1aa;
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -2743,7 +2743,7 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 1.2px;
@@ -2810,7 +2810,7 @@ button {
 }
 
 .focus-node-role {
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 8px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -2842,7 +2842,7 @@ button {
 .experience-eyebrow {
   display: inline-block;
   margin-bottom: 16px;
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 2px;
@@ -2897,7 +2897,7 @@ button {
 }
 
 .experience-index {
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 13px;
   font-weight: 600;
   color: #a1a1aa;
@@ -2907,7 +2907,7 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -2924,7 +2924,7 @@ button {
 
 .experience-period {
   margin-bottom: 12px;
-  font-family: monospace;
+  font-family: var(--mono);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 1px;

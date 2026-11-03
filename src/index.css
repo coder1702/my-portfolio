@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 :root {
+  --mono: "Geist Mono Variable", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   font-family:
+    "Geist Variable",
     Inter,
     system-ui,
     -apple-system,
